@@ -1,6 +1,7 @@
 #pragma once
 
 #include "MapProvider.h"
+#include "gdal/gdal.h"
 
 #include <QString>
 
@@ -34,5 +35,27 @@ class CopernicusElevationProvider : public ElevationProvider {
                             const double bottomRightLat) const override;
 
   protected:
+    QString _getURL(const int x, const int y, const int zoom, QNetworkAccessManager* networkManager) override;
+};
+
+// -----------------------------------------------------------
+// GDAL Elevation
+
+class GdalElevationProvider : public ElevationProvider {
+    Q_OBJECT
+public:
+    GdalElevationProvider(QObject* parent = nullptr)
+        : ElevationProvider(QStringLiteral("bin"), AVERAGE_AIRMAP_ELEV_SIZE,
+                            QGeoMapType::StreetMap, parent) {}
+
+    int long2tileX(const double lon, const int z) const override;
+
+    int lat2tileY(const double lat, const int z) const override;
+
+    QGCTileSet getTileCount(const int zoom, const double topleftLon,
+                            const double topleftLat, const double bottomRightLon,
+                            const double bottomRightLat) const override;
+
+protected:
     QString _getURL(const int x, const int y, const int zoom, QNetworkAccessManager* networkManager) override;
 };

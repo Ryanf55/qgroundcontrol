@@ -5,6 +5,14 @@ add_subdirectory(sdl2)
 add_subdirectory(zlib)
 add_subdirectory(qmlglsink)
 
+find_package(GDAL 3.8 CONFIG)
+if(NOT GDAL_FOUND)
+    # Save compilation time by disabling a lot of drivers, only enabling the bare minimum.
+    set(GDAL_BUILD_OPTIONAL_DRIVERS OFF CACHE BOOL "Disable optional GDAL Drivers")
+    set(GDAL_ENABLE_DRIVER_SRTMHGT ON CACHE BOOL "Enable SRTMHGT (for ArduPilot Terrain Server)")
+    add_subdirectory(gdal)
+endif()
+
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "Force qmdnsengine & shapelib to build as static" FORCE)
 add_subdirectory(shapelib)
 add_subdirectory(qmdnsengine)

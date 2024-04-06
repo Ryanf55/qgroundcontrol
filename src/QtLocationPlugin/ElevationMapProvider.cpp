@@ -56,3 +56,29 @@ QGCTileSet CopernicusElevationProvider::getTileCount(const int zoom, const doubl
 
     return set;
 }
+
+//-----------------------------------------------------------------------------
+int GdalElevationProvider::long2tileX(const double lon, const int z) const {
+    // TODO
+    return 0;
+}
+
+//-----------------------------------------------------------------------------
+int GdalElevationProvider::lat2tileY(const double lat, const int z) const {
+    // TODO
+    return 0;
+}
+
+QString GdalElevationProvider::_getURL(const int x, const int y, const int zoom, QNetworkAccessManager* networkManager) {
+    // TODO
+    return QString("TODO");
+}
+
+QGCTileSet GdalElevationProvider::getTileCount(const int zoom, const double topleftLon,
+                                                 const double topleftLat, const double bottomRightLon,
+                                                 const double bottomRightLat) const {
+    QGCTileSet set;
+    //TODO
+
+    return set;
+}

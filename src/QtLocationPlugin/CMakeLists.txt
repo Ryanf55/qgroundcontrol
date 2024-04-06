@@ -51,6 +51,7 @@ target_link_libraries(QGCLocation
 	PRIVATE
 		Qt6::Core5Compat
 	PUBLIC
+		GDAL::GDAL
 		Qt6::Core
 		Qt6::Location
 		Qt6::LocationPrivate

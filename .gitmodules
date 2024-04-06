@@ -28,3 +28,6 @@
 [submodule "resources/SDL_GameControllerDB"]
 	path = resources/SDL_GameControllerDB
 	url = https://github.com/mdqinc/SDL_GameControllerDB.git
+[submodule "libs/gdal"]
+	path = libs/gdal
+	url = https://github.com/OSGeo/gdal.git
